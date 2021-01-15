@@ -85,7 +85,9 @@ const NewPlace = () => {
 				errorText='Please enter a valid address.'
 				onInput={inputHandler}
 			/>
-			<Button type='submit'>ADD PLACE</Button>
+			<Button type='submit' disabled={!formState.isValid}>
+				ADD PLACE
+			</Button>
 		</form>
 	);
 };
