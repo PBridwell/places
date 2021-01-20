@@ -38,6 +38,7 @@ const DUMMY_PLACES = [
 ];
 
 const UpdatePlace = () => {
+	const [isLoading, setIsLoading] = useState(true);
 	const placeId = useParams().placeId;
 
 	const [formState, inputHandler, setFormData] = useForm(
@@ -70,6 +71,7 @@ const UpdatePlace = () => {
 			},
 			true
 		);
+		setIsLoading(false);
 	}, [setFormData, identifiedPlace]);
 
 	const placeUpdateSubmitHandler = (event) => {
@@ -85,7 +87,7 @@ const UpdatePlace = () => {
 		);
 	}
 
-	if (!formState.input.title.value) {
+	if (isLoading) {
 		return (
 			<div className='center'>
 				<h2>Loading...</h2>
